@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cw8xfeooiprmp"]
+
+[ext_resource type="Script" uid="uid://ddkcc214mi3n8" path="res://main.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://clh4uf2dd5orq" path="res://Cubo.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://ped7gn0kav0h" path="res://Cubo_Player.tscn" id="3_r0du0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxg2q"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
+
+[sub_resource type="Animation" id="Animation_rxg2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cubo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_glv2v"]
+resource_name = "cubo_move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cubo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 1.9797522, 0), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uu6xs"]
+_data = {
+&"RESET": SubResource("Animation_rxg2q"),
+&"cubo_move": SubResource("Animation_glv2v")
+}
+
+[node name="Node3D" type="Node3D" unique_id=232816406]
+script = ExtResource("1_glv2v")
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1905144758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03040409, 0.004327774, 0)
+use_collision = true
+size = Vector3(10, 0.1, 10)
+
+[node name="Cubo" type="MeshInstance3D" parent="." unique_id=372567548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_rxg2q")
+mesh = SubResource("BoxMesh_glv2v")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=295476152]
+transform = Transform3D(1, 0, 0, 0, 0.98704404, 0.16044971, 0, -0.16044971, 0.98704404, 0, 0.84539187, 3.901495)
+fov = 45.8
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1291042242]
+transform = Transform3D(1, 0, 0, 0, 0.41041648, 0.91189826, 0, -0.91189826, 0.41041648, 0, 5.9842157, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=165797784]
+libraries/ = SubResource("AnimationLibrary_uu6xs")
+
+[node name="Cubo1" parent="." unique_id=1033268441 instance=ExtResource("2_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5462122, 0.49494708, 0.6438663)
+
+[node name="Cubo2" parent="." unique_id=361720178 instance=ExtResource("2_uu6xs")]
+transform = Transform3D(0.99999976, -0.00068067835, 0, 0.00068067835, 0.99999976, 0, 0, 0, 1, -1.316849, 0.55579746, 0.45728302)
+
+[node name="Node3D" parent="." unique_id=848805719 instance=ExtResource("3_r0du0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043391705, 0.5815177, 1.2726383)

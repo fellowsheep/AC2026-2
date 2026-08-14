@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ped7gn0kav0h"]
+
+[ext_resource type="Script" uid="uid://c7lncm238fy4u" path="res://cubo_player.gd" id="1_jtk5a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jkf4"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jtk5a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mo0cl"]
+
+[sub_resource type="Animation" id="Animation_t77d1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sq1bg"]
+resource_name = "girar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ktxp"]
+_data = {
+&"RESET": SubResource("Animation_t77d1"),
+&"girar": SubResource("Animation_sq1bg")
+}
+
+[node name="Node3D" type="CharacterBody3D" unique_id=848805719]
+script = ExtResource("1_jtk5a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=30978879]
+material_override = SubResource("StandardMaterial3D_2jkf4")
+mesh = SubResource("BoxMesh_jtk5a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1935909346]
+shape = SubResource("BoxShape3D_mo0cl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=362724647]
+libraries/ = SubResource("AnimationLibrary_8ktxp")
