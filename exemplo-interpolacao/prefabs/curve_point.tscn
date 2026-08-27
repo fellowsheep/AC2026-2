@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ddjujaa0htv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3yuw"]
+albedo_color = Color(0.08, 0.08, 0.08, 1)
+roughness = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_fsspe"]
+
+[node name="CurvePoint" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_m3yuw")
+mesh = SubResource("SphereMesh_fsspe")
