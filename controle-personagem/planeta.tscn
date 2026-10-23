@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dj3a13qignst6"]
+
+[ext_resource type="PackedScene" uid="uid://br5mpck7se4fx" path="res://Planet by Quaternius - rYguWNNPvA.glb" id="1_u18kc"]
+
+[node name="Root Scene" unique_id=1229838555 instance=ExtResource("1_u18kc")]

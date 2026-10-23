@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cmx2f1dg2gxw4"]
+
+[ext_resource type="PackedScene" uid="uid://l10d7xwm1xcc" path="res://FernandoFlamingo.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://b5n8n5g64jtgt" path="res://animation_controller.gd" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://dj3a13qignst6" path="res://planeta.tscn" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://dkfwqu75ae3hu" path="res://planeta.gd" id="4_cm0pq"]
+
+[node name="Node3D" type="Node3D" unique_id=1820121759]
+
+[node name="Fernando_Flamingo" parent="." unique_id=1455070395 instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.502)
+script = ExtResource("2_r0du0")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1954775828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36459696, 1.2177715, 4.274461)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2121525461]
+transform = Transform3D(1, 0, 0, 0, 0.720418, 0.69354016, 0, -0.69354016, 0.720418, 0, 4.4775753, 1.1193771)
+
+[node name="Planetinha" parent="." unique_id=1229838555 node_paths=PackedStringArray("character") instance=ExtResource("3_r0du0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.093235016, -1.7534618, 1.319366)
+script = ExtResource("4_cm0pq")
+character = NodePath("../Fernando_Flamingo")
